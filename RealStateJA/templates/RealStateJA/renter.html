@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renter Actions</title>
+    <style>
+  		body {
+  			font-family: Arial, sans-serif;
+  			background-color: #f2f2f2;
+  			margin: 0;
+  			padding: 0;
+  		}
+
+  		h1 {
+  			text-align: center;
+  			margin-top: 50px;
+  		}
+
+  		button {
+  			background-color: #4CAF50;
+  			color: white;
+  			padding: 12px 20px;
+  			border: none;
+  			border-radius: 4px;
+  			cursor: pointer;
+  			margin: 10px;
+  			font-size: 16px;
+  			font-weight: bold;
+  		}
+
+  		button:hover {
+  			background-color: #3e8e41;
+  		}
+
+  		a {
+  			text-decoration: none;
+  		}
+
+  		.container {
+  			display: flex;
+  			justify-content: center;
+  			align-items: center;
+  			height: 100vh;
+  		}
+
+  		.buttons {
+  			display: flex;
+  			flex-wrap: wrap;
+  			justify-content: center;
+  			align-items: center;
+  		}
+  	</style>
+</head>
+<body>
+    <h1>Renter Actions</h1>
+    <nav>
+        <ul>
+						<li><a href="{% url 'payinfomod' %}"><button>Add/Modify Payment Information</button></a></li>
+						<li><a href="{% url 'addinfomod' %}"><button>Add/Modify Address Information</button></a></li>
+						<li><a href="{% url 'propertyselection' %}"><button>Search for Properties</button></a></li>
+						<li><a href="{% url 'bookrent' %}"><button>Manage Bookings</button></a></li>
+						<li><a href="{% url 'home' %}"><button>Go back to Home</button></a></li>
+        </ul>
+    </nav>
+</body>
+</html>

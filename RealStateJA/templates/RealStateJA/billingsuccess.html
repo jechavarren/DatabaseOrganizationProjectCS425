@@ -1,0 +1,58 @@
+<div class="success-message">
+  <i class="fa fa-check-circle"></i>
+  <p>Your billing information has been updated successfully!</p>
+</div>
+
+<div class="button-container">
+  <a href="{% url 'home' %}" class="home-btn">Go back to Home</a>
+  <a href="{% url 'agentview' %}" class="home-btn">Renter's Actions</a>
+</div>
+
+<style>
+  .success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .success-message i {
+    color: #4F8A10;
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .success-message p {
+    color: #4F8A10;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  .home-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .home-btn:hover {
+    background-color: #3e8e41;
+  }
+</style>

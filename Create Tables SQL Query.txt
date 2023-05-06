@@ -1,0 +1,104 @@
+CREATE TABLE person_user (
+email_address VARCHAR(35),
+name VARCHAR(20),
+PRIMARY KEY (email_address)
+);
+
+create table agent(
+email_address varchar(35),
+agency varchar(35),
+licensed_number varchar(5),
+commission_rate numeric,
+foreign key (email_address) references person_user,
+primary key (email_address)
+);
+
+create table perspective_renter (
+email_address varchar(35),
+desired_move_in_date date,
+preferred_location_city varchar(20),
+preferred_location_state varchar(15),
+budget integer,
+foreign key (email_address) references person_user,
+primary key (email_address)
+);
+
+create table property(
+property_ID serial,
+location_address varchar(30),
+location_city varchar(20),
+location_state varchar(15),
+listing_type varchar(10),
+building_type varchar(15),
+availability date,
+primary key (property_ID)
+);
+
+create table house(
+property_ID serial,
+number_of_rooms int,
+square_footage int,
+description varchar(200),
+price int,
+foreign key (property_ID) references property,
+primary key (property_ID)
+);
+
+create table apartment(
+property_ID serial,
+number_of_rooms int,
+square_footage int,
+description varchar(200),
+price int,
+foreign key (property_ID) references property,
+primary key (property_ID)
+);
+
+create table commercial_building(
+property_ID serial,
+square_footage numeric(6,2),
+type_of_business varchar(20),
+description varchar(200),
+price int,
+foreign key (property_ID) references property,
+primary key (property_ID)
+);
+
+create table credit_card(
+email_address varchar(35),
+card_number char(19),
+billing_address varchar(35),
+cardholder_name varchar(35),
+foreign key (email_address) references person_user,
+primary key (email_address, card_number)
+);
+
+create table booking(
+property_ID serial,
+start_booking_date date,
+end_booking_date date,
+card_number char(19),
+email_address varchar(35),
+foreign key (email_address, card_number) references credit_card (email_address, card_number) ,
+foreign key (property_ID) references property,
+primary key (property_ID,email_address, card_number, start_booking_date)
+);
+
+create table email_address_telephone(
+email_address varchar(35),
+telephone varchar(16),
+foreign key (email_address) references person_user,
+primary key (email_address, telephone)
+);
+
+create table user_address(
+email_address varchar(35),
+street_street_number varchar(5),
+street_street_name varchar(20),
+street_apt_number varchar(10),
+city varchar(20),
+state varchar(15),
+zip varchar(5),
+foreign key (email_address) references person_user(email_address),
+primary key (email_address)
+);

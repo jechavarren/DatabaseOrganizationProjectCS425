@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search Results</title>
+</head>
+<body>
+  {% if results %}
+    <table>
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>State</th>
+          <th>Price</th>
+          <th>Building Type</th>
+          <th>Listing Type</th>
+          <th>Number of Bedrooms</th>
+          <th>Available Date</th>
+          <th>Building Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prop, building in results %}
+          <tr>
+            <td>{{ prop.location_city }}</td>
+            <td>{{ prop.location_state }}</td>
+            <td>{{ prop.price }}</td>
+            <td>{{ building.get_building_type_display }}</td>
+            <td>{{ prop.get_listing_type_display }}</td>
+            <td>{{ prop.num_bedrooms }}</td>
+            <td>{{ prop.availability }}</td>
+            <td>{{ building }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+</body>
+</html>

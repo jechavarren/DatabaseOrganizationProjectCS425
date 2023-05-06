@@ -1,0 +1,189 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Search</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+
+        h1 {
+        text-align: center;
+        }
+
+        form {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        }
+
+        fieldset {
+        border: none;
+        margin-bottom: 20px;
+        }
+
+        label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+        margin-right: 5px;
+        }
+
+        button[type="submit"],
+        button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        fieldset {
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+        }
+
+        legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+        }
+
+        button[type="submit"]:hover,
+        button:hover {
+        background-color: #3e8e41;
+        }
+
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        }
+
+        th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        color: #333;
+        }
+
+        tr:nth-child(even) {
+        background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+  
+{% block content %}
+<h1>Commercial Buildings Search</h1>
+<a href="{% url 'propertyselection' %}"><button>Search Properties</button></a>
+<a href="{% url 'book' %}"><button>Book property</button></a>
+
+<form method="get" action="{% url 'commercialsearch' %}">
+  <div>
+    <label for="location">Location:</label>
+    <input type="text" name="location" value="{{ request.GET.location }}">
+  </div>
+  <div>
+    <label for="agency">Agency:</label>
+    <input type="text" name="agency" value="{{ request.GET.agency }}">
+  </div>
+  <div>
+    <label for="type_of_business">Type of Business:</label>
+    <input type="text" name="type_of_business" value="{{ request.GET.type_of_business }}">
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" name="price" value="{{ request.GET.price }}">
+  </div>
+  <div>
+    <label for="availability">Availability:</label>
+    <input type="date" name="availability" value="{{ request.GET.availability }}">
+  </div>
+  <div>
+    <label for="listing_type">Listing Type:</label>
+    <select name="listing_type">
+        <option value="">--Select--</option>
+        <option value="Sale" {% if request.GET.availability == 'Sale' %}selected{% endif %}>Sale</option>
+        <option value="Rental" {% if request.GET.availability == 'Rental' %}selected{% endif %}>Rental</option>
+      </select>
+  </div>
+  <div>
+    <button type="submit">Search</button>
+    {% if request.GET.location or request.GET.agency or request.GET.number_of_rooms or request.GET.price or request.GET.availability or request.GET.listing_type %}
+    <a href="{% url 'commercialsearch' %}" class="btn btn-secondary">Reset Search</a>
+    {% endif %}
+  </div>
+</form>
+{% if commercials %}
+  <table>
+    <thead>
+      <tr>
+        <th>Property ID</th>
+        <th>Agency</th>
+        <th>Location Address</th>
+        <th>Location City</th>
+        <th>Location State</th>
+        <th>Availability</th>
+        <th>Listing Type</th>
+        <th>Building Type</th>
+        <th>Square Footage</th>
+        <th>Type of Business</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for commercial in commercials %}
+      <tr>
+        <td>{{ commercial.0 }}</td>
+        <td>{{ commercial.1 }}</td>
+        <td>{{ commercial.2 }}</td>
+        <td>{{ commercial.3 }}</td>
+        <td>{{ commercial.4 }}</td>
+        <td>{{ commercial.5 }}</td>
+        <td>{{ commercial.6 }}</td>
+        <td>{{ commercial.7 }}</td>
+        <td>{{ commercial.8 }}</td>
+        <td>{{ commercial.9 }}</td>
+        <td>{{ commercial.10 }}</td>
+        <td>{{ commercial.11 }}</td>
+      </tr>
+     
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    {% else %}
+        <p>No commercial buildings found.</p>
+        <a href="{% url 'commercialsearch' %}" class="button">Reset Search</a>
+    {% endif %}
+
+{% endblock %}

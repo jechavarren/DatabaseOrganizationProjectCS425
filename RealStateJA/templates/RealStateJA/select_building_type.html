@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Building Type</title>
+</head>
+<body>
+    <h1>Select Building Type</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="building_type">Building Type:</label>
+        <select name="building_type" id="building_type">
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="commercial_building">Commercial Building</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

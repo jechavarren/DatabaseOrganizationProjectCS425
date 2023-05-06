@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Booking completed successfully</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+  
+<body>
+    <h1>Booking completed successfully</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Property ID</th>
+                <th>Email address</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Card Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ booking.property_id }}</td>
+                <td>{{ booking.email_address }}</td>
+                <td>{{ booking.start_booking_date }}</td>
+                <td>{{ booking.end_booking_date }}</td>
+                <td>{{ booking.card_number }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div style="text-align: center;">
+        <button onclick="window.location.href = '{% url 'home' %}';">Go back home</button>
+    </div>
+</body>
+</html>

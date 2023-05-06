@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Properties</title>
+</head>
+<body>
+    <h1>Combined Property Information</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th rowspan="2">Property ID</th>
+                <th rowspan="2">Agency</th>
+                <th rowspan="2">Address</th>
+                <th rowspan="2">City</th>
+                <th rowspan="2">State</th>
+                <th rowspan="2">Availability</th>
+                <th rowspan="2">Listing Type</th>
+                <th rowspan="2">Building Type</th>
+                <th colspan="4">House</th>
+                <th colspan="4">Apartment</th>
+                <th colspan="4">Commercial Building</th>
+            </tr>
+            <tr>
+                <th>Rooms</th>
+                <th>Sq. Ft.</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Rooms</th>
+                <th>Sq. Ft.</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Sq. Ft.</th>
+                <th>Description</th>
+                <th>Type of Business</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property in properties %}
+                <tr>
+                    <td>{{ property.property_id }}</td>
+                    <td>{{ property.agency }}</td>
+                    <td>{{ property.location_address }}</td>
+                    <td>{{ property.location_city }}</td>
+                    <td>{{ property.location_state }}</td>
+                    <td>{{ property.availability }}</td>
+                    <td>{{ property.listing_type }}</td>
+                    <td>{{ property.building_type }}</td>
+                    <td>{{ property.house_rooms|default:"" }}</td>
+                    <td>{{ property.house_square_footage|default:"" }}</td>
+                    <td>{{ property.house_description|default:"" }}</td>
+                    <td>{{ property.house_price|default:"" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

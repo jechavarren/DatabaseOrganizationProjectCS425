@@ -1,0 +1,89 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Cancelation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      fieldset {
+        border: none;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"], input[type="number"], input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      input[type="radio"] {
+        margin-right: 5px;
+      }
+      button[type="submit"], button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      fieldset {
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+  
+      legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      button[type="submit"]:hover, button:hover {
+        background-color: #3e8e41;
+      }
+      #agent_fields, #renter_fields {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cancel Booking</h1>
+    <a href="{% url 'home' %}"><button>Go back to Home</button></a>
+    <a href="{% url 'bookrent' %}"><button>Manage Bookings</button></a>
+    <form method="POST">
+      {% csrf_token %}
+  <fieldset>
+    <legend>Enter your booking information</legend>
+    <label for="property_id">Property ID:</label><br>
+    <input type="number" name="property_id" id="property_id"><br><br>
+    {% if error_message1 %}
+      <p class="error">{{ error_message1 }}</p>
+    {% endif %}
+    <label for="email_address">Email Address:</label><br>
+    <input type="text" id="email_address" name="email_address"><br><br>
+    {% if error_message %}
+      <p class="error">{{ error_message }}</p>
+    {% endif %}
+  </fieldset>
+  <button type="submit">Submit</button>
+  </form>
+  

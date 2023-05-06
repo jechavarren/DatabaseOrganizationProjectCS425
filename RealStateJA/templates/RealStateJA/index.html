@@ -1,0 +1,41 @@
+<form method="POST" action="{% url 'index' %}">
+  {% csrf_token %}
+  <label for="property_id">Property ID:</label>
+  <input type="text" id="property_id" name="property_id"><br>
+  <label for="location_city">Location City:</label>
+  <input type="text" id="location_city" name="location_city"><br>
+  <label for="location_state">Location State:</label>
+  <input type="text" id="location_state" name="location_state"><br>
+  <label for="description">Description:</label>
+  <input type="text" id="description" name="description"><br>
+  <label for="price">Price:</label>
+  <input type="text" id="price" name="price"><br>
+  <label for="availability">Availability:</label>
+  <input type="date" id="availability" name="availability"><br>
+  <input type="submit" value="Add Property">
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property ID</th>
+      <th>Location City</th>
+      <th>Location State</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for property in properties %}
+      <tr>
+        <td>{{ property.property_id }}</td>
+        <td>{{ property.location_city }}</td>
+        <td>{{ property.location_state }}</td>
+        <td>{{ property.description }}</td>
+        <td>{{ property.price }}</td>
+        <td>{{ property.availability }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Address Info Modification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    fieldset {
+      border: none;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+    button[type="submit"], button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    fieldset {
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    button[type="submit"]:hover, button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <h1>Property Management</h1>
+  <a href="{% url 'home' %}"><button>Go back to Home</button></a>
+  <form method="POST">
+    {% csrf_token %}
+    <div>
+      <label for="agency">Agency:</label>
+      <input type="text" name="agency" id="agency">
+    </div>
+    <div>
+      <label for="location_address">Address:</label>
+      <input type="text" name="location_address" id="location_address">
+    </div>
+    <div>
+      <label for="location_city">City:</label>
+      <input type="text" name="location_city" id="location_city">
+    </div>
+    <div>
+      <label for="location_state">State:</label>
+      <input type="text" name="location_state" id="location_state">
+    </div>
+    <div>
+      <label for="listing_type">Listing Type (Rental/Sale):</label>
+      <input type="text" name="listing_type" id="listing_type">
+    </div>
+    <div>
+      <label for="availability">Availability:</label>
+      <input type="date" name="availability" id="availability">
+    </div>
+    <div>
+      <label for="builing_type">Building_type:</label>
+      <input type="text" name="building_type" id="building_type">
+    </div>
+    <div>
+      <label for="square_footage">Square Footage:</label>
+      <input type="number" name="square_footage" id="square_footage">
+    </div>
+    <div>
+      <label for="number_of_rooms">Number of Rooms:</label>
+      <input type="number" name="number_of_rooms" id="number_of_rooms">
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea name="description" id="description"></textarea>
+    </div>
+    <div>
+      <label for="price">Price ($):</label>
+      <input type="number" name="price" id="price">
+    </div>
+    <div>
+      <label for="type_of_business">Type of Business (Only commercial buildings):</label>
+      <input type="text" name="type_of_business" id="type_of_business">
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</body>
