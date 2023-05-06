@@ -22,7 +22,7 @@ This repository contains a project developed for the Database Organization Cours
 
 1. Clone the repository:
 
-git clone https://github.com/username/real-state-management.git
+git clone https://github.com/jechavarren/DatabaseOrganizationProjectCS425.git
 cd real-state-management
 
 2. Create and activate a virtual environment:
@@ -34,16 +34,16 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
-4. Configure your PostgreSQL database connection in `real_state_management/settings.py`:
+4. Configure your PostgreSQL database connection in `RealState/settings.py`:
 
 DATABASES = {
 'default': {
-'ENGINE': 'django.db.backends.postgresql',
-'NAME': '<your_database_name>',
-'USER': '<your_database_user>',
-'PASSWORD': '<your_database_password>',
-'HOST': 'localhost',
-'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'JA',
+        'USER': 'abarja',
+        'PASSWORD': 'cs425',
+        'HOST': 'localhost',
+        'PORT': '5432',
 }
 }
 
@@ -53,7 +53,7 @@ python manage.py migrate
 
 6. Load the sample data:
 
-psql -U <your_database_user> -d <your_database_name> -f sample_data.sql
+psql -U <abarja> -d <RealState> -f DataIntroduction.sql
 
 7. Run the development server:
 
@@ -63,7 +63,7 @@ python manage.py runserver
 
 ## Demo Video
 
-A video demo showcasing the web app functionality can be found in this repository. You can watch it [here](./demo_video.mp4).
+A video demo showcasing the web app functionality can be found in this repository. You can watch it [here](./Demonstration Video.mp4).
 
 ## Contributing
 
