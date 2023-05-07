@@ -63,7 +63,7 @@ python manage.py runserver
 
 ## Demo Video
 
-A video demo showcasing the web app functionality can be found in this repository. You can watch it [here](./Demonstration Video.mp4).
+A video demo showcasing the web app functionality can be found in this repository. You can watch it [./Demonstration Video.mp4].
 
 ## Contributing
 
